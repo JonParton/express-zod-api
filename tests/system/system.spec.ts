@@ -27,7 +27,6 @@ describe("App", async () => {
       { provider: () => ({ corsDone: true }) },
     )
     .build({
-      method: "get",
       input: z.object({}),
       output: z.object({ corsDone: z.boolean() }),
       handler: async ({ options: { corsDone } }) => ({ corsDone }),
@@ -51,7 +50,6 @@ describe("App", async () => {
   const faultyEndpoint = new EndpointsFactory(faultyResultHandler)
     .addMiddleware(faultyMiddleware)
     .build({
-      method: "get",
       input: z.object({
         epError: z
           .any()
@@ -99,7 +97,6 @@ describe("App", async () => {
       },
     });
   const longEndpoint = new EndpointsFactory(defaultResultHandler).build({
-    method: "get",
     input: z.object({}),
     output: z.object({}),
     handler: async () => setTimeout(5000, {}),

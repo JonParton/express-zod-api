@@ -18,7 +18,6 @@ describe("Testing", () => {
           },
         })
         .build({
-          method: "get",
           input: z.object({}),
           output: z.object({}),
           handler: async () => ({}),
